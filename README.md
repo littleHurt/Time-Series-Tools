@@ -10,7 +10,6 @@ Calculate the similarity from two input seires data. The idea of this measuremen
 from CIRP Journal of Manufacturing Science and Technology. Volume 12, January 2016, Pages 1-13
 
 ### grey_forecast <h3>
-Implement grey forecasting model where is based on GM(l,l) of grey relational space.
-The idea of grey forecasting model is cited from following paper:
+Implement grey forecasting model where is based on GM(1,1) of grey relational space. The idea of grey forecasting model is cited from following paper:
 *Introduction to Grey System Theory*. by Deng Julong.
 from The Journal of Grey System. Volume 1, issue 1, October 1989, pp1–24.
