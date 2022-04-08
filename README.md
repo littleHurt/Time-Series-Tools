@@ -1,4 +1,4 @@
-# Time-Series-Tools
+# Time-Series-Tools <h1>
 Recording some customized functions built by myself which are useful in application of time series analysis and forecasting tasks.
   
 ## series_rescaler <h2>
