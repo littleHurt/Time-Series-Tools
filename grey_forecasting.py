@@ -29,14 +29,14 @@ def grey_forecast(list_input, n = 1):
         [1] Simulated values : (list)
             The simulated values of past.
             
-        [2] Parameters : (list)
-            Get parameters from fitted model.
+        [2] Parameters : (tuple)
+            The parameters from fitted model.
             
-        [3] MAPE : (float)
-            Get parameters from fitted model.
+        [3] MSE : (float)
+            Mean Square Error from fitted model.
             
-        [4] MASE : (float)
-            Get parameters from fitted model.
+        [4] MAE : (float)
+            Mean Absolute Error from fitted model.
     """
     # create accumulative-generated series
     list_a = list(np.cumsum(list_input))
@@ -63,10 +63,11 @@ def grey_forecast(list_input, n = 1):
     
     a = MMULT_3[0][0]
     b = MMULT_3[1][0]
+    params = (a,b)
     
     # create an empty list to store all forecasting value 
     list_pred = []
-
+    
     # create an empty list to store all residuals
     list_residuals = []
     list_residuals_sqr = []
@@ -92,14 +93,14 @@ def grey_forecast(list_input, n = 1):
             list_residuals.append(num_residuals)            
     
     # get prediction
-    pred_step_n = list_pred[len(list_input):]
-    list_pred   = list_pred[:len(list_input)]
+    future_pred = list_pred[len(list_input):]
+    past_simulated = list_pred[:len(list_input)]
     
     # calculate forecasting metrics
     MSE = sum(list_residuals_sqr) / len(list_input)
     MAE = sum(list_residuals) / len(list_input)
     
-    return pred_step_n, list_pred, MSE, MAE
+    return future_pred, past_simulated, params, MSE, MAE
 # End of function
 
 
@@ -110,7 +111,8 @@ data = [44, 88, 50, 66, 77, 33, 33]
 # see testing result
 print(grey_forecast(data,3)[0]) # generate 3 stpes forecasting values
 print(grey_forecast(data)[1]) # generate simulated value of input data
-print(grey_forecast(data)[2]) # get MSE from actual values and simulated values
-print(grey_forecast(data)[3]) # get MAE from actual values and simulated values
+print(grey_forecast(data)[2]) # get parameters from fitted model.
+print(grey_forecast(data)[3]) # get MSE from fitted model
+print(grey_forecast(data)[4]) # get MAE from fitted model
 
 # End
