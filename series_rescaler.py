@@ -55,8 +55,9 @@ def series_rescaler(list_raw, period_new):
             list_new[indexs] += float(list_input[w] * unit)
             unit_count += 0.01
             
-    for i in range(len(list_new)):
-        list_new[i] = round(list_new[i] * (1 / sum(list_new)), 6)
+    for j in range(0,5):
+        for i in range(len(list_new)):
+            list_new[i] = round(list_new[i] * (1 / sum(list_new)), 6)
         
     return list_new
     # End of function: list_rescaler()
